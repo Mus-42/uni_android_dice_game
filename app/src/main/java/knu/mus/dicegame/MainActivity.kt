@@ -6,10 +6,7 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.activity.viewModels
-import knu.mus.dicegame.DiceViewModel
 
 class MainActivity : AppCompatActivity() {
     val viewModel by viewModels<DiceViewModel>();
@@ -41,7 +38,6 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.button_roll).setOnClickListener {
             Log.d(TAG, "Rolling");
-            viewModel.signalStart()
             viewModel.randomRoll()
         };
 
@@ -60,8 +56,7 @@ class MainActivity : AppCompatActivity() {
 
     fun updateDiceDisplay(newDiceValues: List<Int>) {
         for ((newValue, dice) in newDiceValues.zip(dices)) {
-            val index = newValue
-            dice.setImageResource(diceImageResources[index]);
+            dice.setImageResource(diceImageResources[newValue]);
         }
     }
 
