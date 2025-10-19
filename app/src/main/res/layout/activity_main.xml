@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.168" />
 
     <ImageView
-        android:id="@+id/dice_h"
+        android:id="@+id/dice_e"
         android:layout_width="100dp"
         android:layout_height="96dp"
         android:layout_marginStart="-30dp"
