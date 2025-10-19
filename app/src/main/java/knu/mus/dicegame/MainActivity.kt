@@ -41,14 +41,14 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.button_roll).setOnClickListener {
             Log.d(TAG, "Rolling");
-            // TODO Replace with randomRoll
-            viewModel.random()
+            viewModel.signalStart()
+            viewModel.randomRoll()
         };
 
         findViewById<Button>(R.id.button_stop).setOnClickListener {
             Log.d(TAG, "Stopping");
 
-            // TODO when stop method implemented call viewModel.signalStop()
+            viewModel.signalStop()
         };
 
 
@@ -60,8 +60,7 @@ class MainActivity : AppCompatActivity() {
 
     fun updateDiceDisplay(newDiceValues: List<Int>) {
         for ((newValue, dice) in newDiceValues.zip(dices)) {
-            // TODO when newDiceValues have correct remove and replace with newDiceValue-1
-            val index = (newValue % 6 + 6) % 6;
+            val index = newValue
             dice.setImageResource(diceImageResources[index]);
         }
     }
